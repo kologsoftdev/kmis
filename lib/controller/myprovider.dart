@@ -158,7 +158,7 @@ class Myprovider extends LoginProvider {
       notifyListeners();
 
       final snapshot = await db.collection("terms").where("schoolId", isEqualTo: schoolid).get();
-
+      terms.clear();
       terms = snapshot.docs.map((doc) {
         return TermModel.fromMap(doc.data(), doc.id);
       }).toList();

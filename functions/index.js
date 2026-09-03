@@ -604,7 +604,7 @@ export const updateReportsOnLedger = onDocumentCreated(
           : { income: 0, expenditure: 0, breakdown: {} };
 
         // Check debit side → usually Expenditure
-        if (accounts.debit?.accountClass === "Expenditure") {
+        if (accounts.debit?.accountClass === "Expense") {
           const value = parseFloat(accounts.debit.value || "0");
           incData.expenditure += value;
           incData.breakdown[accounts.debit.account] =
@@ -612,7 +612,7 @@ export const updateReportsOnLedger = onDocumentCreated(
         }
 
         // Check credit side → usually Income
-        if (accounts.credit?.accountClass === "Income") {
+        if (accounts.credit?.accountClass === "Revenue") {
           const value = parseFloat(accounts.credit.value || "0");
           incData.income += value;
           incData.breakdown[accounts.credit.account] =
